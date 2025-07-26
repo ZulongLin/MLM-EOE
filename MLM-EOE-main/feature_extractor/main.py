@@ -34,9 +34,9 @@ class MyTQDMProgressBar(TQDMProgressBar):
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Personal information')
-    parser.add_argument('--data_dir', default='/usr/local/lzlconda/data/processed_data/video', type=str,
+    parser.add_argument('--data_dir', default='', type=str,
                         help='data_dir')
-    parser.add_argument('--label_file', default='/usr/local/lzlconda/data/csv/dataset_YiYu_95_split.csv', type=str,
+    parser.add_argument('--label_file', default='', type=str,
                         help='data_dir')
     parser.add_argument('--train_data', default=['AVEC2013-train'], nargs='+', help='traindata')
     parser.add_argument('--val_data', default=['AVEC2013-val'], nargs='+', help='valdata')
@@ -83,8 +83,8 @@ if __name__ == '__main__':
             args.wd = wd
             args.dropout = dropout
 
-            log_dir = f'logs/search_{args.type}/{args.pretrained_way}/frame_interval_{frame_interval}_wd_{wd}_dropout_{dropout}_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}'
-            best_model_dir = f'best_models/search_{args.type}/{args.pretrained_way}/frame_interval_{frame_interval}_wd_{wd}_dropout_{dropout}_{datetime.datetime.now().strftime("%Y%m%d_%H%M%S")}'
+            log_dir = f'logs/'
+            best_model_dir = f'best_models/'
 
             shutil.rmtree(args.cache_path, ignore_errors=True)
             os.makedirs(args.cache_path, exist_ok=True)
@@ -150,14 +150,14 @@ if __name__ == '__main__':
         checkpoint_callback = ModelCheckpoint(
             monitor='val_mae',
             mode='min',
-            dirpath=f'best_models/best_model_{args.type}/{args.pretrained_way}',
+            dirpath=f'best_models/',
             filename='{epoch}-{val_mae:.2f}-{val_rmse:.2f}'
         )
 
         trainer = pl.Trainer(
             accelerator="gpu",
             devices=args.deviceid,
-            logger=CSVLogger(save_dir=f'logs/logs_{args.type}/{args.pretrained_way}'),
+            logger=CSVLogger(save_dir=f'logs/'),
             max_epochs=args.max_epochs,
             callbacks=[checkpoint_callback, MyTQDMProgressBar()],
         )

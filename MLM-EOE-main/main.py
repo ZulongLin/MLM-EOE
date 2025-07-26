@@ -21,9 +21,9 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='Model Training Parameter Settings')
 
-    parser.add_argument('--data_dir', default='/usr/local/lzlconda/data/features/Dataset', type=str,
+    parser.add_argument('--data_dir', default='', type=str,
                         help='Data storage directory')
-    parser.add_argument('--label_file', default='/usr/local/lzlconda/data/csv/dataset_YiYu_95_split.csv', type=str,
+    parser.add_argument('--label_file', default='', type=str,
                         help='Label file path')
     parser.add_argument('--train_data', default=[f'{train_dataset}-train'], nargs='+', help='Training dataset(s)')
     parser.add_argument('--val_data', default=[f'{test_dataset}-val'], nargs='+', help='Validation dataset(s)')

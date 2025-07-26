@@ -33,7 +33,7 @@ if __name__ == '__main__':
     parser.add_argument('--num_frames', default=1, type=int, help='Number of frames')
     parser.add_argument('--batch_size', default=1, type=int, help='Batch size')
     parser.add_argument('--num_workers', default=0, type=int, help='Number of workers')
-    parser.add_argument('--max_epochs', default=1, type=int, help='Maximum number of training epochs')
+    parser.add_argument('--max_epochs', default=50, type=int, help='Maximum number of training epochs')
     parser.add_argument('--learning_rate', default=1e-3, type=float, help='Learning rate')
     parser.add_argument('--weight_decay', default=1e-4, type=float, help='Weight decay')
     parser.add_argument('--dropout', default=0.1, type=float, help='Dropout rate')

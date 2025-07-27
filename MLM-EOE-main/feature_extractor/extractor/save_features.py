@@ -152,7 +152,7 @@ if __name__ == '__main__':
     parser.add_argument('--save_dir', default='', type=str,
                         help='save_dir', )
     parser.add_argument('--type', default='AVEC2013', type=str, help='type', )
-    parser.add_argument('--save_file_name', default='iresnet50_base_1_pretrained', type=str, help='type', )
+    parser.add_argument('--save_file_name', default='iresnet50_base_1', type=str, help='type', )
     args = parser.parse_args()
     # Enter the local tag file path
     labeldata = pd.read_csv('')

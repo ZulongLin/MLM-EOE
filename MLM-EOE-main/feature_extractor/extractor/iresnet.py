@@ -1,6 +1,5 @@
 import torch
 from torch import nn
-from torch.utils.checkpoint import checkpoint
 
 __all__ = ['iresnet18', 'iresnet34', 'iresnet50', 'iresnet100', 'iresnet200']
 using_ckpt = False
@@ -58,10 +57,8 @@ class IBasicBlock(nn.Module):
         return out        
 
     def forward(self, x):
-        if self.training and using_ckpt:
-            return checkpoint(self.forward_impl, x)
-        else:
-            return self.forward_impl(x)
+
+        return self.forward_impl(x)
 
 
 class IResNet(nn.Module):

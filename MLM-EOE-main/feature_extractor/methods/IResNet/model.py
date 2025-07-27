@@ -1,6 +1,5 @@
 import os
 import sys
-import torch
 import torch.nn as nn
 
 from methods.IResNet.backbones import iresnet
@@ -12,6 +11,7 @@ class VideoFeatureExtractor(nn.Module):
     def __init__(self, dropout=0.7, pretrained=True):
         super().__init__()
         self.model = iresnet.iresnet50(pretrained=False)
+        # load your checkpoint here
 
         additional_layers = nn.Sequential(
             nn.BatchNorm1d(self.model.fc.out_features, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True),
@@ -26,6 +26,6 @@ class VideoFeatureExtractor(nn.Module):
         print(self.model)
 
     def forward(self, x):
-        x=x.squeeze(2)
+        x = x.squeeze(2)
         x = self.model(x)
         return x

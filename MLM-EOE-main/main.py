@@ -26,7 +26,7 @@ if __name__ == '__main__':
     parser.add_argument('--label_file', default='', type=str,
                         help='Label file path')
     parser.add_argument('--train_data', default=[f'{train_dataset}-train'], nargs='+', help='Training dataset(s)')
-    parser.add_argument('--val_data', default=[f'{test_dataset}-val'], nargs='+', help='Validation dataset(s)')
+    parser.add_argument('--val_data', default=[f'{test_dataset}-dev'], nargs='+', help='Validation dataset(s)')
     parser.add_argument('--test_data', default=[f'{test_dataset}-test'], nargs='+', help='Test dataset(s)')
 
     parser.add_argument('--model_name', default='Expert', help='Model name')

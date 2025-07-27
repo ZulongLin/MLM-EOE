@@ -39,7 +39,7 @@ if __name__ == '__main__':
     parser.add_argument('--label_file', default='', type=str,
                         help='data_dir')
     parser.add_argument('--train_data', default=['AVEC2013-train'], nargs='+', help='traindata')
-    parser.add_argument('--val_data', default=['AVEC2013-val'], nargs='+', help='valdata')
+    parser.add_argument('--val_data', default=['AVEC2013-dev'], nargs='+', help='valdata')
     parser.add_argument('--test_data', default=['AVEC2013-test'], nargs='+', help='testdata')
     parser.add_argument('--pretrained_way', default='imagenet', type=str, help='pretrained_data')
     parser.add_argument('--cache_path', default=f'AVEC2013', type=str, help='cache_path')

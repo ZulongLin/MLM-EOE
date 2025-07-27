@@ -89,14 +89,14 @@ class VideoRegressionDataModule(pl.LightningDataModule):
         self.num_workers = num_workers
 
         train_transforms = transforms.Compose([
-            transforms.Resize((112, 112)),
+            transforms.Resize((224, 224)),
             transforms.RandomHorizontalFlip(p=0.5),
             transforms.RandomRotation(30),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
         val_transform = transforms.Compose([
-            transforms.Resize((112, 112)),
+            transforms.Resize((224, 224)),
             transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
         ])
 
@@ -106,7 +106,7 @@ class VideoRegressionDataModule(pl.LightningDataModule):
                                           stage='train', frame_interval=frame_interval, transform=train_transforms,
                                           cache_path=cache_path)
         self.val_dataset = VideoDataset(data_dir, self.labeldata, val_data, num_frames=num_frames, type=type,
-                                        stage='val', frame_interval=frame_interval, transform=val_transform,
+                                        stage='dev', frame_interval=frame_interval, transform=val_transform,
                                         cache_path=cache_path)
         self.test_dataset = VideoDataset(data_dir, self.labeldata, test_data, num_frames=num_frames, type=type,
                                         stage='test', frame_interval=frame_interval, transform=val_transform,

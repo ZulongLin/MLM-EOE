@@ -211,7 +211,7 @@ class MILRegressionDataModule(pl.LightningDataModule):
         self.input_dims = 0
         self.label_df = pd.read_csv(args.label_file)
         self.train_dataset = MILDataset(args, self.label_df, args.train_data, stage='train')
-        self.val_dataset = MILDataset(args, self.label_df, args.val_data, stage='val')
+        self.val_dataset = MILDataset(args, self.label_df, args.val_data, stage='dev')
         self.test_dataset = MILDataset(args, self.label_df, args.test_data, stage='test')
         self.input_dims = self.val_dataset.input_dims
         self.save_hyperparameters(args)

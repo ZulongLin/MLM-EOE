@@ -7,7 +7,7 @@ from PIL import Image
 from tqdm import tqdm
 from concurrent.futures import ThreadPoolExecutor
 
-dataset = "AVEC2013"
+dataset = "AVEC2014"
 model_name = "clip_vit"
 
 def match_image_folders_with_csv(image_dir):
